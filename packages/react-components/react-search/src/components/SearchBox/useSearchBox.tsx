@@ -36,11 +36,11 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   // Tracks the focus of the component for the contentAfter and dismiss button
   const [focused, setFocused] = React.useState(false);
 
-  const onFocus = useEventCallback(() => {
+  const onFocus = React.useCallback(() => {
     setFocused(true);
   });
 
-  const onBlur: React.FocusEventHandler<HTMLSpanElement> = useEventCallback(ev => {
+  const onBlur = React.useCallback((ev: React.FocusEvent<HTMLSpanElement>) => {
     setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
   });
 
